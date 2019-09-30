@@ -12,19 +12,13 @@ namespace EventManagement.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult Support()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            // ...
+            return Redirect("http://helpdesk.nagarro.com");
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+       
     }
 }

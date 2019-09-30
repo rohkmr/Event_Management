@@ -1,0 +1,110 @@
+﻿@model IEnumerable<EventCommon.Event>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="column" id="PastPresent" style="background-color:#aaa;">
+            <h3>Present Events:</h3>
+
+            @foreach (var item in Model)
+            {
+                int count = 0;
+                if (item.IsPrivate != true && item.Date > DateTime.Now)
+                {
+
+                    count++;
+                    <table class="table">
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </td>
+
+
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) *@
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                            </td>
+                        </tr>
+                    </table>
+                    @*@if (count == 0)
+                        {
+                            @Html.TextBox("No Present Event found")
+                        }*@
+
+
+
+                }
+            }
+
+        </div>
+        <div class="column" id="PastPresent" style="background-color:#bbb;">
+            <h3>Past Events:</h3>
+            @foreach (var item in Model)
+            {
+                //  int count = 0;
+                if (item.IsPrivate != true && item.Date <= DateTime.Now)
+                {
+                    //    count++;
+                    <table class="table">
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </td>
+
+
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) *@
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                            </td>
+                        </tr>
+                    </table>
+                    @*@if (count == 0)
+                        {
+                            @Html.TextBox("No Past Event found")
+                        }*@
+
+
+
+                }
+            }
+        </div>
+    </div>
+    <link rel="stylesheet" href="../style.css">
+
+</body>
+
+
+
+
